@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/item_wechat"
+        android:title="Wechat"
+        android:icon="@drawable/ic_action_home"/>
+
+    <item
+        android:id="@+id/item_contacts"
+        android:title="Contacts"
+        android:icon="@drawable/ic_action_cloud"/>
+
+    <item
+        android:id="@+id/item_discover"
+        android:title="Discover"
+        android:icon="@drawable/ic_action_explore"/>
+
+    <item
+        android:id="@+id/item_me"
+        android:title="Me"
+        android:icon="@drawable/ic_action_me"/>
+
+</menu>
