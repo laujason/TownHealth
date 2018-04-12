@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
     private List<String> tabIndicators;
     private List<Fragment> tabFragments;
-    private ContentPagerAdapter contentAdapter;
+//    private ContentPagerAdapter contentAdapter;
     private BottomNavigationView bottomNavigationView;
     private MenuItem menuItem;
 
@@ -37,12 +37,12 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
-        mTabTl =  findViewById(R.id.tl_tab);
-        mContentVp =  findViewById(R.id.vp_content);
-        viewPager = findViewById(R.id.vp_content_bottom);
-        initContent();
-        initTab();
+        /*mTabTl =  findViewById(R.id.tl_tab);
+        mContentVp =  findViewById(R.id.vp_content);*/
 
+        /*initContent();
+        initTab();*/
+        viewPager = findViewById(R.id.vp_content_bottom);
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.bnv_menu);
         //默认 >3 的选中效果会影响ViewPager的滑动切换时的效果，故利用反射去掉
         BottomNavigationViewHelper.disableShiftMode(bottomNavigationView);
@@ -57,11 +57,14 @@ public class MainActivity extends AppCompatActivity {
                             case R.id.item_contacts:
                                 viewPager.setCurrentItem(1);
                                 break;
-                            case R.id.item_discover:
+                            case R.id.item_share:
                                 viewPager.setCurrentItem(2);
                                 break;
-                            case R.id.item_me:
+                            case R.id.item_discover:
                                 viewPager.setCurrentItem(3);
+                                break;
+                            case R.id.item_me:
+                                viewPager.setCurrentItem(4);
                                 break;
                         }
                         return false;
@@ -94,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void initTab(){
+    /*private void initTab(){
         mTabTl.setTabMode(TabLayout.MODE_SCROLLABLE);
         mTabTl.setTabTextColors(ContextCompat.getColor(this, R.color.gray), ContextCompat.getColor(this, R.color.white));
         mTabTl.setSelectedTabIndicatorColor(ContextCompat.getColor(this, R.color.white));
@@ -104,9 +107,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void initContent() {
         tabIndicators = new ArrayList<>();
-        /*for (int i = 0; i < 8; i++) {
+        *//*for (int i = 0; i < 8; i++) {
             tabIndicators.add("Tab " + i);
-        }*/
+        }*//*
         for (int i = 0; i < mTabTitles_top.length; i++) {
             tabIndicators.add(mTabTitles_top[i]);
         }
@@ -116,19 +119,21 @@ public class MainActivity extends AppCompatActivity {
         }
         contentAdapter = new ContentPagerAdapter(getSupportFragmentManager());
         mContentVp.setAdapter(contentAdapter);
-    }
+    }*/
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
 
         adapter.addFragment(BaseFragment.newInstance("新闻"));
         adapter.addFragment(BaseFragment.newInstance("图书"));
+        adapter.addFragment(BaseFragment.newInstance("分享"));
         adapter.addFragment(BaseFragment.newInstance("发现"));
         adapter.addFragment(BaseFragment.newInstance("更多"));
+
         viewPager.setAdapter(adapter);
     }
 
-    private class ContentPagerAdapter extends FragmentPagerAdapter{
+    /*private class ContentPagerAdapter extends FragmentPagerAdapter{
 
         public ContentPagerAdapter(FragmentManager fm) {
             super(fm);
@@ -148,5 +153,5 @@ public class MainActivity extends AppCompatActivity {
         public CharSequence getPageTitle(int position) {
             return tabIndicators.get(position);
         }
-    }
+    }*/
 }

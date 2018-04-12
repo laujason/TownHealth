@@ -3,19 +3,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:paddingBottom="61dp"
+    android:paddingTop="56dp"
+    >
 
-    <TextView
+    <!--<TextView
         android:id="@+id/tv_content"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TabContent"
-        android:textSize="@dimen/sp_16"/>
-    <!--<ScrollView
+        android:textSize="@dimen/sp_16"/>-->
+
+    <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-
-    </ScrollView>-->
+        android:layout_height="match_parent"
+        android:id="@+id/rv_content">
+    </android.support.v7.widget.RecyclerView>
 
 </LinearLayout>

@@ -3,13 +3,18 @@
 
     <item
         android:id="@+id/item_wechat"
-        android:title="Wechat"
+        android:title="首页"
         android:icon="@drawable/ic_action_home"/>
 
     <item
         android:id="@+id/item_contacts"
         android:title="Contacts"
         android:icon="@drawable/ic_action_cloud"/>
+
+    <item
+        android:id="@+id/item_share"
+        android:title="Share"
+        android:icon="@drawable/ic_action_settings"/>
 
     <item
         android:id="@+id/item_discover"
