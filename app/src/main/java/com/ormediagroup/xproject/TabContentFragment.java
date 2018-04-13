@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.DecimalFormat;
 import java.util.Date;
@@ -17,9 +18,10 @@ import java.util.Date;
  * Created by YQ04 on 2018/4/11.
  */
 
-public class TabContentFragment extends Fragment{
+public class TabContentFragment extends Fragment implements View.OnClickListener{
     private static final String EXTRA_CONTENT = "content";
     private RecyclerView mContentRv;
+
     public static TabContentFragment newInstance(String content){
         Bundle arguments = new Bundle();
         arguments.putString(EXTRA_CONTENT, content);
@@ -34,9 +36,23 @@ public class TabContentFragment extends Fragment{
         View contentView = inflater.inflate(R.layout.fragment_tab_content, null);
 //        ((TextView)contentView.findViewById(R.id.tv_content)).setText(getArguments().getString(EXTRA_CONTENT));
         mContentRv =  contentView.findViewById(R.id.rv_content);
+
+        initView();
+        return contentView;
+    }
+
+    private void initView() {
         mContentRv.setLayoutManager(new LinearLayoutManager(getActivity()));
         mContentRv.setAdapter(new ContentAdapter());
-        return contentView;
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.tv_content:
+                Toast.makeText(getActivity(),"U click this item",Toast.LENGTH_SHORT).show();
+                break;
+        }
     }
 
     private class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.ContentHolder>{
@@ -48,7 +64,7 @@ public class TabContentFragment extends Fragment{
 
         @Override
         public void onBindViewHolder(ContentAdapter.ContentHolder holder, int position) {
-            Date date = new Date();
+//            Date date = new Date();
             holder.itemTv_title.setText("Item "+new DecimalFormat("00").format(position));
             holder.itemTv_content.setText("许多离我们而去的美好事物，其实未曾远逝，而是以另一种风姿呈现在我们生命里，这便是永恒。");
             holder.itemTv_time.setText("2018/4/12");
@@ -56,7 +72,7 @@ public class TabContentFragment extends Fragment{
 
         @Override
         public int getItemCount() {
-            return 36;
+            return 50;
         }
 
         class ContentHolder extends RecyclerView.ViewHolder{

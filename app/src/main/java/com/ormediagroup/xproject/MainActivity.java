@@ -14,44 +14,41 @@ import android.os.Bundle;
 
 import android.view.MenuItem;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.ormediagroup.xproject.Fragment.ContactFragment;
+import com.ormediagroup.xproject.Fragment.DiscoverFragment;
+import com.ormediagroup.xproject.Fragment.HomeFragment;
+import com.ormediagroup.xproject.Fragment.ShareFragment;
+import com.ormediagroup.xproject.Fragment.UserFragment;
+
 
 public class MainActivity extends AppCompatActivity {
 
-    private TabLayout mTabTl;
-    private ViewPager mContentVp,viewPager;
 
-
-    private List<String> tabIndicators;
-    private List<Fragment> tabFragments;
-//    private ContentPagerAdapter contentAdapter;
+    private ViewPager viewPager;
     private BottomNavigationView bottomNavigationView;
     private MenuItem menuItem;
-
-    private String[] mTabTitles_top = new String []{"推荐","热点","体育","健康","娱乐","军事","科技"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
-
-        /*mTabTl =  findViewById(R.id.tl_tab);
-        mContentVp =  findViewById(R.id.vp_content);*/
-
-        /*initContent();
-        initTab();*/
         viewPager = findViewById(R.id.vp_content_bottom);
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.bnv_menu);
+        initView();
+
+    }
+
+    private void initView() {
         //默认 >3 的选中效果会影响ViewPager的滑动切换时的效果，故利用反射去掉
         BottomNavigationViewHelper.disableShiftMode(bottomNavigationView);
+
         bottomNavigationView.setOnNavigationItemSelectedListener(
                 new BottomNavigationView.OnNavigationItemSelectedListener() {
                     @Override
                     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                         switch (item.getItemId()) {
-                            case R.id.item_wechat:
+                            case R.id.item_home:
                                 viewPager.setCurrentItem(0);
                                 break;
                             case R.id.item_contacts:
@@ -94,64 +91,24 @@ public class MainActivity extends AppCompatActivity {
         });
 
         setupViewPager(viewPager);
-
     }
-
-    /*private void initTab(){
-        mTabTl.setTabMode(TabLayout.MODE_SCROLLABLE);
-        mTabTl.setTabTextColors(ContextCompat.getColor(this, R.color.gray), ContextCompat.getColor(this, R.color.white));
-        mTabTl.setSelectedTabIndicatorColor(ContextCompat.getColor(this, R.color.white));
-        ViewCompat.setElevation(mTabTl, 10);
-        mTabTl.setupWithViewPager(mContentVp);
-    }
-
-    private void initContent() {
-        tabIndicators = new ArrayList<>();
-        *//*for (int i = 0; i < 8; i++) {
-            tabIndicators.add("Tab " + i);
-        }*//*
-        for (int i = 0; i < mTabTitles_top.length; i++) {
-            tabIndicators.add(mTabTitles_top[i]);
-        }
-        tabFragments = new ArrayList<>();
-        for (String s : tabIndicators) {
-            tabFragments.add(TabContentFragment.newInstance(s));  //内容
-        }
-        contentAdapter = new ContentPagerAdapter(getSupportFragmentManager());
-        mContentVp.setAdapter(contentAdapter);
-    }*/
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-
-        adapter.addFragment(BaseFragment.newInstance("新闻"));
+        //viewPager.setCurrentItem(0);
+        /*adapter.addFragment(BaseFragment.newInstance("新闻"));
         adapter.addFragment(BaseFragment.newInstance("图书"));
         adapter.addFragment(BaseFragment.newInstance("分享"));
         adapter.addFragment(BaseFragment.newInstance("发现"));
-        adapter.addFragment(BaseFragment.newInstance("更多"));
+        adapter.addFragment(BaseFragment.newInstance("更多"));*/
+
+        adapter.addFragment(new HomeFragment());
+        adapter.addFragment(new ContactFragment());
+        adapter.addFragment(new ShareFragment());
+        adapter.addFragment(new DiscoverFragment());
+        adapter.addFragment(new UserFragment());
 
         viewPager.setAdapter(adapter);
     }
 
-    /*private class ContentPagerAdapter extends FragmentPagerAdapter{
-
-        public ContentPagerAdapter(FragmentManager fm) {
-            super(fm);
-        }
-
-        @Override
-        public Fragment getItem(int position) {
-            return tabFragments.get(position);
-        }
-
-        @Override
-        public int getCount() {
-            return tabIndicators.size();
-        }
-
-        @Override
-        public CharSequence getPageTitle(int position) {
-            return tabIndicators.get(position);
-        }
-    }*/
 }

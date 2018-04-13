@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/item_wechat"
+        android:id="@+id/item_home"
         android:title="首页"
         android:icon="@drawable/ic_action_home"/>
 

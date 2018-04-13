@@ -48,14 +48,6 @@ public class BaseFragment extends Fragment {
         mContentVp =  view.findViewById(R.id.vp_content);
         initContent();
         initTab();
-        /*TextView tvInfo = (TextView) view.findViewById(R.id.textView);
-        tvInfo.setText(getArguments().getString("info"));
-        tvInfo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Snackbar.make(v, "Don't click me.please!.", Snackbar.LENGTH_SHORT).show();
-            }
-        });*/
         return view;
     }
 
