@@ -3,6 +3,7 @@ package com.ormediagroup.xproject;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -12,7 +13,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by YQ04 on 2018/4/11.
@@ -21,6 +24,7 @@ import java.util.Date;
 public class TabContentFragment extends Fragment implements View.OnClickListener{
     private static final String EXTRA_CONTENT = "content";
     private RecyclerView mContentRv;
+    private List<String> imageUrl = new ArrayList<>();
 
     public static TabContentFragment newInstance(String content){
         Bundle arguments = new Bundle();
@@ -59,31 +63,36 @@ public class TabContentFragment extends Fragment implements View.OnClickListener
 
         @Override
         public ContentAdapter.ContentHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            return new ContentHolder(LayoutInflater.from(getActivity()).inflate(R.layout.item_simple_list_1, parent, false));
+            return new ContentHolder(LayoutInflater.from(getActivity()).inflate(R.layout.home_item_view, parent, false));
         }
 
         @Override
         public void onBindViewHolder(ContentAdapter.ContentHolder holder, int position) {
 //            Date date = new Date();
-            holder.itemTv_title.setText("Item "+new DecimalFormat("00").format(position));
+            /*holder.itemTv_title.setText("Item "+new DecimalFormat("00").format(position));
             holder.itemTv_content.setText("许多离我们而去的美好事物，其实未曾远逝，而是以另一种风姿呈现在我们生命里，这便是永恒。");
-            holder.itemTv_time.setText("2018/4/12");
+            holder.itemTv_time.setText("2018/4/12");*/
+            holder.topAdViewPager.setBackgroundResource(R.mipmap.ic_launcher);
+//            imageUrl.add("http://mpic.tiankong.com/aa4/fd8/aa4fd84a633298f43fe4521ba9a2dcbc/640.jpg");
+//            initBanner(imageUrl);
         }
 
         @Override
         public int getItemCount() {
-            return 50;
+            return 1;
         }
 
         class ContentHolder extends RecyclerView.ViewHolder{
 
             private TextView itemTv_title,itemTv_content,itemTv_time;
+            private ViewPager topAdViewPager;
 
             public ContentHolder(View itemView) {
                 super(itemView);
-                itemTv_title = itemView.findViewById(R.id.tv_title);
+                topAdViewPager = itemView.findViewById(R.id.homeSlider);
+                /*itemTv_title = itemView.findViewById(R.id.tv_title);
                 itemTv_content = itemView.findViewById(R.id.tv_content);
-                itemTv_time = itemView.findViewById(R.id.tv_time);
+                itemTv_time = itemView.findViewById(R.id.tv_time);*/
             }
         }
 
