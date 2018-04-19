@@ -1,6 +1,9 @@
 <resources>
-    <string name="app_name">XProject</string>
+    <string name="app_name">TownHealth</string>
     <string name="Townhealth_domain">http://thhealthmgt.com/</string>
 
-
+    <string name="medical_report">體檢報告</string>
+    <string name="shopping_online">網上購物</string>
+    <string name="health_info">保健資訊</string>
+    <string name="about_us">關於康健</string>
 </resources>
