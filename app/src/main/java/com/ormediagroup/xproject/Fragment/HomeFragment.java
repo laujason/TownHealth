@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 
 import com.ormediagroup.xproject.R;
 import com.ormediagroup.xproject.TabContentFragment;
+import com.ormediagroup.xproject.ViewPagerAdapter;
 
 
 import java.util.ArrayList;
@@ -75,9 +76,21 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         for (String s : tabIndicators) {
             tabFragments.add(TabContentFragment.newInstance(s));  //内容
         }
+
         contentAdapter = new ContentPagerAdapter(getActivity().getSupportFragmentManager());
         tabViewpager.setAdapter(contentAdapter);
+        /*setupViewPager(tabViewpager);
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager())
+        tabViewpager.addFragment(new HomePageFragment());*/
     }
+
+    /*private void setupViewPager(ViewPager viewPager) {
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getActivity().getSupportFragmentManager());
+        adapter.addFragment(new HomePageFragment());
+        viewPager.setAdapter(adapter);
+    }*/
+
+
 
     @Override
     public void onClick(View v) {

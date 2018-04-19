@@ -90,11 +90,6 @@ public class MainActivity extends AppCompatActivity {
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         //viewPager.setCurrentItem(0);
-        /*adapter.addFragment(BaseFragment.newInstance("新闻"));
-        adapter.addFragment(BaseFragment.newInstance("图书"));
-        adapter.addFragment(BaseFragment.newInstance("分享"));
-        adapter.addFragment(BaseFragment.newInstance("发现"));
-        adapter.addFragment(BaseFragment.newInstance("更多"));*/
 
         adapter.addFragment(new HomeFragment());
         adapter.addFragment(new ContactFragment());
