@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    >
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dp_8"
+        android:layout_marginTop="@dimen/dp_8"
+        android:gravity="center_horizontal"
+        >
+        <ImageView
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:paddingTop="@dimen/dp_8"
+            android:src="@drawable/shopping_item_300x300"
+            android:layout_alignParentTop="true"
+            android:id="@+id/shopping_item_image"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="(DNA) 天資基因檢測"
+            android:id="@+id/shopping_item_name"
+            android:layout_below="@id/shopping_item_image"
+            android:layout_marginTop="@dimen/dp_8"
+            android:textColor="@color/font_color"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$ 36,000.00"
+            android:id="@+id/shopping_item_price"
+            android:layout_below="@id/shopping_item_name"
+            android:textColor="@color/black"
+            />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginTop="@dimen/dp_8"
+            android:text="加到購物車"
+            android:background="@drawable/shape"
+            android:layout_below="@id/shopping_item_price"/>
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_8"
+        android:gravity="center_horizontal">
+        <ImageView
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:paddingTop="@dimen/dp_8"
+            android:src="@drawable/shopping_item2_300x300"
+            android:layout_alignParentTop="true"
+            android:id="@+id/shopping_item_image2"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="(DNA) 皮膚基因檢測"
+            android:id="@+id/shopping_item_name2"
+            android:layout_below="@id/shopping_item_image2"
+            android:layout_marginTop="@dimen/dp_8"
+            android:textColor="@color/font_color"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$ 12,800.00"
+            android:id="@+id/shopping_item_price2"
+            android:layout_below="@id/shopping_item_name2"
+            android:textColor="@color/black"
+            />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginTop="@dimen/dp_8"
+            android:text="加到購物車"
+            android:background="@drawable/shape"
+            android:layout_below="@id/shopping_item_price2"/>
+
+    </RelativeLayout>
+
+
+</LinearLayout>

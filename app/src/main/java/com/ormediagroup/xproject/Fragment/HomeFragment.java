@@ -73,12 +73,17 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
             tabIndicators.add(mTabTitles_top[i]);
         }
         tabFragments = new ArrayList<>();
-        for (String s : tabIndicators) {
+        /*for (String s : tabIndicators) {
             tabFragments.add(TabContentFragment.newInstance(s));  //内容
+        }*/
+        tabFragments.add(new HomePageFragment());
+        for (int i = 1; i < tabIndicators.size(); i++) {
+            TabContentFragment fragment = TabContentFragment.newInstance(tabIndicators.get(i));
+            tabFragments.add(fragment);
         }
-
         contentAdapter = new ContentPagerAdapter(getActivity().getSupportFragmentManager());
         tabViewpager.setAdapter(contentAdapter);
+
         /*setupViewPager(tabViewpager);
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager())
         tabViewpager.addFragment(new HomePageFragment());*/

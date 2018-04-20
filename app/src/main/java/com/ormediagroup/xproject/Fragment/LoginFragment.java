@@ -13,11 +13,11 @@ import com.ormediagroup.xproject.R;
  * Created by YQ04 on 2018/4/13.
  */
 
-public class ContactFragment extends Fragment {
+public class LoginFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_contact,container,false);
+        View view = inflater.inflate(R.layout.fragment_login,container,false);
         return view;
     }
 }

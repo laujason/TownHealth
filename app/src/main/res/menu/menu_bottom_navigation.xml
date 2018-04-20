@@ -3,27 +3,27 @@
 
     <item
         android:id="@+id/item_home"
-        android:title="首页"
-        android:icon="@drawable/ic_action_home"/>
+        android:title="主頁"
+        android:icon="@drawable/home_70x70"/>
 
     <item
         android:id="@+id/item_contacts"
-        android:title="Contacts"
-        android:icon="@drawable/ic_action_cloud"/>
+        android:title="帳戶"
+        android:icon="@drawable/account_70x70"/>
 
     <item
         android:id="@+id/item_share"
-        android:title="Share"
-        android:icon="@drawable/ic_action_settings"/>
+        android:title="購物"
+        android:icon="@drawable/shopping_cart_70x70"/>
 
     <item
         android:id="@+id/item_discover"
-        android:title="Discover"
-        android:icon="@drawable/ic_action_explore"/>
+        android:title="搜尋"
+        android:icon="@drawable/search_70x70"/>
 
     <item
         android:id="@+id/item_me"
-        android:title="Me"
-        android:icon="@drawable/ic_action_me"/>
+        android:title="聯絡我們"
+        android:icon="@drawable/contact_70x70"/>
 
 </menu>

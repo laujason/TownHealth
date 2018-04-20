@@ -6,4 +6,7 @@
     <string name="shopping_online">網上購物</string>
     <string name="health_info">保健資訊</string>
     <string name="about_us">關於康健</string>
+    <string name="make_appointment">立即預約</string>
+    <string name="promotion">優惠及信息</string>
+
 </resources>

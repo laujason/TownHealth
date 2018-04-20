@@ -1,17 +1,20 @@
 package com.ormediagroup.xproject;
 
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import android.view.KeyEvent;
 import android.view.MenuItem;
+import android.widget.Toast;
 
-import com.ormediagroup.xproject.Fragment.ContactFragment;
+import com.ormediagroup.xproject.Fragment.LoginFragment;
 import com.ormediagroup.xproject.Fragment.DiscoverFragment;
 import com.ormediagroup.xproject.Fragment.HomeFragment;
-import com.ormediagroup.xproject.Fragment.ShareFragment;
+import com.ormediagroup.xproject.Fragment.ShoppingFragment;
 import com.ormediagroup.xproject.Fragment.UserFragment;
 
 
@@ -21,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private ViewPager viewPager;
     private BottomNavigationView bottomNavigationView;
     private MenuItem menuItem;
+    private boolean mIsExit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,12 +96,35 @@ public class MainActivity extends AppCompatActivity {
         //viewPager.setCurrentItem(0);
 
         adapter.addFragment(new HomeFragment());
-        adapter.addFragment(new ContactFragment());
-        adapter.addFragment(new ShareFragment());
+        adapter.addFragment(new LoginFragment());
+        adapter.addFragment(new ShoppingFragment());
         adapter.addFragment(new DiscoverFragment());
         adapter.addFragment(new UserFragment());
-
         viewPager.setAdapter(adapter);
+    }
+
+
+    /*
+     * 双击退出应用
+     */
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            if (mIsExit) {
+                this.finish();
+            } else {
+                Toast.makeText(this, "再按一次退出", Toast.LENGTH_SHORT).show();
+                mIsExit = true;
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        mIsExit = false;
+                    }
+                }, 2000);
+            }
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 
 }

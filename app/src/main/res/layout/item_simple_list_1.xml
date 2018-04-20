@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_margin="@dimen/dp_16"
     android:id="@+id/list_item"
     >
-
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_64"
+        >
     <ImageView
         android:id="@+id/civ_avatar"
         android:layout_width="@dimen/dp_48"
         android:layout_height="@dimen/dp_48"
-        android:src="@mipmap/ic_avatar"/>
+        android:src="@mipmap/ic_avatar"
+        android:layout_marginLeft="@dimen/dp_16"/>
 
     <TextView
         android:id="@+id/tv_title"
@@ -52,4 +56,7 @@
         android:background="@color/gray"
         android:layout_below="@id/tv_time"
         />
+
+    </RelativeLayout>
+
 </RelativeLayout>
