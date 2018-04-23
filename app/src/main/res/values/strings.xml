@@ -8,5 +8,17 @@
     <string name="about_us">關於康健</string>
     <string name="make_appointment">立即預約</string>
     <string name="promotion">優惠及信息</string>
+    <string name="th_service">康健服務</string>
+
+
+    <string name="user_login">用戶登入</string>
+    <string name="user_phone_number">请输入手機號</string>
+    <string name="user_password">请输入密碼</string>
+    <string name="statement">我接受康健集團的免責聲明及使用條款</string>
+    <string name="forget_password">忘記密碼？</string>
+    <string name="user_register">新用戶註冊</string>
+    <string name="login_error">用戶名或密碼錯誤</string>
+
+    <string name="register_hint">如有需要，此電話號碼會用作未來重設帳戶密碼之用，請準確填寫。</string>
 
 </resources>

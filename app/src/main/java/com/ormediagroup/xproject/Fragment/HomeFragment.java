@@ -36,7 +36,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
     private List<String> tabIndicators;
     private List<Fragment> tabFragments;
     private ContentPagerAdapter contentAdapter;
-    private String[] mTabTitles_top = new String []{"推荐","热点","体育","健康","娱乐","军事","科技","学习","社会"};
+    private String[] mTabTitles_top = new String []{"推荐","Tap1","Tap2","Tap3","Tap4","Tap5","Tap6","Tap7","Tap8"};
 
 
     @Nullable

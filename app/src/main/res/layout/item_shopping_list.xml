@@ -28,12 +28,14 @@
             android:id="@+id/shopping_item_name"
             android:layout_below="@id/shopping_item_image"
             android:layout_marginTop="@dimen/dp_8"
+            android:paddingLeft="@dimen/dp_8"
             android:textColor="@color/font_color"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="$ 36,000.00"
             android:id="@+id/shopping_item_price"
+            android:paddingLeft="@dimen/dp_8"
             android:layout_below="@id/shopping_item_name"
             android:textColor="@color/black"
             />
@@ -41,6 +43,7 @@
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:layout_marginTop="@dimen/dp_8"
+            android:layout_marginLeft="@dimen/dp_8"
             android:text="加到購物車"
             android:background="@drawable/shape"
             android:layout_below="@id/shopping_item_price"/>
@@ -66,12 +69,14 @@
             android:id="@+id/shopping_item_name2"
             android:layout_below="@id/shopping_item_image2"
             android:layout_marginTop="@dimen/dp_8"
+            android:paddingLeft="@dimen/dp_8"
             android:textColor="@color/font_color"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="$ 12,800.00"
             android:id="@+id/shopping_item_price2"
+            android:paddingLeft="@dimen/dp_8"
             android:layout_below="@id/shopping_item_name2"
             android:textColor="@color/black"
             />
@@ -80,6 +85,7 @@
             android:layout_height="30dp"
             android:layout_marginTop="@dimen/dp_8"
             android:text="加到購物車"
+            android:layout_marginLeft="@dimen/dp_8"
             android:background="@drawable/shape"
             android:layout_below="@id/shopping_item_price2"/>
 

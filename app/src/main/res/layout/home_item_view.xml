@@ -35,11 +35,17 @@
         attrs:piv_viewPager="@+id/homeSlider" />-->
 
 
-
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/th_service"
+        android:textSize="@dimen/sp_16"
+        android:textColor="@color/font_color"
+        android:layout_marginLeft="@dimen/dp_8"
+        android:layout_marginTop="@dimen/dp_4"/>
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="120dp"
-            android:layout_marginTop="@dimen/dp_16"
             android:orientation="horizontal">
 
             <RelativeLayout

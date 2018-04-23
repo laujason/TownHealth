@@ -4,6 +4,14 @@
     android:layout_height="match_parent"
     android:paddingBottom="60dp"
     android:orientation="vertical">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="體檢套餐"
+        android:textColor="@color/font_color"
+        android:textSize="@dimen/sp_16"
+        android:paddingTop="@dimen/dp_16"
+        android:layout_marginLeft="@dimen/dp_8"/>
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
