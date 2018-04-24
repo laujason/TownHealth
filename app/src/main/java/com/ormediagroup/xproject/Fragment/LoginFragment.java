@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.ormediagroup.xproject.JsonRespon;
 import com.ormediagroup.xproject.R;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 /**
@@ -30,6 +31,8 @@ public class LoginFragment extends Fragment {
 //    private boolean debug = true;
     private CheckBox cb_accept;
     String TownHealthDomain ;
+
+    JSONObject loginJsonObject;
 
     @Nullable
     @Override
@@ -54,7 +57,7 @@ public class LoginFragment extends Fragment {
                     User_login(str_phone, str_psw);
 
                 } else{
-                    Toast.makeText(getActivity().getApplicationContext(), "請先同意免責聲明", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity().getApplicationContext(), "請先同意免責聲明及使用條款", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -65,12 +68,18 @@ public class LoginFragment extends Fragment {
 
     private void User_login(String str_phone, String str_psw) {
         TownHealthDomain = getString(R.string.Townhealth_domain);
-        String URL = TownHealthDomain + "app/app-login/?action=log&lphone="+str_phone+"&lpwd="+str_psw;
+        String URL = TownHealthDomain + "app/app-login/?action=log&lphone="+str_phone+"&lpwd="+str_psw+"&debug=1";
+        Log.i("ORM","URL:"+URL);
+
         new JsonRespon(getActivity(),URL, new JsonRespon.onComplete() {
             @Override
             public void onComplete(JSONObject json) {
+
                 try{
+//                    loginJsonObject = json.getJSONObject("data");
 //                    txt_error.setVisibility(View.VISIBLE);
+                    
+                    Log.i("ORM","json tostring"+json.toString());
                     Toast.makeText(getActivity().getApplicationContext(), "Login Success", Toast.LENGTH_SHORT).show();
                 }catch (Exception e){
                     Log.e("ORM", "login Error : " + e.toString());

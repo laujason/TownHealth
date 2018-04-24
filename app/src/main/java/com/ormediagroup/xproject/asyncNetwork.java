@@ -10,6 +10,10 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
 
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLSession;
+
 /**
  * Created by YQ04 on 2018/4/19.
  */
@@ -39,8 +43,18 @@ public class asyncNetwork extends AsyncTask<String, Void, String> {
     @Override
     protected String doInBackground(String... params) {
         // Log.e("ORM","context isn ull");
+        Log.i("ORM","AsyncNetwork DIB "+url);
+        Log.i("ORM","AsyncNetwork DIB 2"+params.toString());
         InputStream myStream=getStream(url);
+        InputStream myStream2 = getHttpsStream("https://thhealthmgt.com/app/app-login/?action=log&lphone=97067755&lpwd=7755&debug=1");
+        if (myStream2!=null)
+        Log.i("ORM","AsyncNetwork DIB3 "+myStream2.toString());
+        InputStream myStream3 = getStream("http://thhealthmgt.com/app/app-login/?action=log&lphone=97067755&lpwd=7755&debug=1");
+        if (myStream3!=null)
+        Log.i("ORM","AsyncNetwork DIB4 "+myStream3.toString());
         String builder  ="";
+
+
 
         //Log.e("ORM","my stremam"+myStream.toString());
         if (myStream != null) {
@@ -74,8 +88,30 @@ public class asyncNetwork extends AsyncTask<String, Void, String> {
         try {
             URL url = new URL(u);
             URLConnection urlConnection = url.openConnection();
+            urlConnection.setRequestProperty("method","POST");
             urlConnection.setConnectTimeout(15000);
             urlConnection.setRequestProperty("connection", "close");
+            return urlConnection.getInputStream();
+        } catch (Exception ex) {
+            Log.e("ORM",ex.toString());
+            return null;
+        }
+    }
+    final static HostnameVerifier DO_NOT_VERIFY = new HostnameVerifier() {
+        public boolean verify(String hostname, SSLSession session) {
+            Log.i("ORM","Async Networking Setting Host NAme Verifier");
+            return true;
+        }
+    };
+    private InputStream getHttpsStream(String u) {
+        try {
+            URL url = new URL(u);
+            HttpsURLConnection urlConnection = (HttpsURLConnection)url.openConnection();
+
+            InputStream in = urlConnection.getInputStream();
+            Log.i("ORM","Async Stream"+in.toString());
+
+
             return urlConnection.getInputStream();
         } catch (Exception ex) {
             Log.e("ORM",ex.toString());

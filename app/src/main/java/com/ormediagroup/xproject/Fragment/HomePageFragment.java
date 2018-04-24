@@ -57,6 +57,7 @@ public class HomePageFragment extends Fragment{
                     topAdJsonArray = new ArrayList<JSONObject>();
                     /** Prepare TopAd and Bottom Ad data (From JSONArray to ArrayList<JSONObject>)>**/
                     adJsonArray = json.getJSONArray("ads");
+//                    Log.i("ORM","ads:"+json.toString());
                     for (int i = 0; i < adJsonArray.length(); i++) {
                         topAdJsonArray.add(adJsonArray.getJSONObject(i));
                         Log.i("ORM",  packagename+"Get topad url: " +topAdJsonArray);
@@ -89,6 +90,7 @@ public class HomePageFragment extends Fragment{
         try {
             Topad.setTag(topAdJsonArray.get(0).getString("url"));
             PicassoTrustSSL.getInstance(getActivity()).load(topAdJsonArray.get(0).getString("img")).into(Topad);
+
 //            Picasso.with(getActivity()).load(topAdJsonArray.get(0).getString("img")).into(Topad);
             Log.i("ORM","imageUrl:"+topAdJsonArray.get(0).getString("img"));
             Topad.setOnClickListener(new View.OnClickListener() {
