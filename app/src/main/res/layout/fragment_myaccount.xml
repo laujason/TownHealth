@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/rl_top">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_welcomeUser"
+            android:text="你好，User"
+            android:layout_margin="@dimen/dp_8"
+            android:textColor="@color/font_color"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:textSize="@dimen/sp_14"/>
+
+        <TextView
+            android:id="@+id/tv_update_accountInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/tv_welcomeUser"
+            android:layout_alignBottom="@+id/tv_welcomeUser"
+            android:layout_toEndOf="@+id/tv_welcomeUser"
+            android:text="[更改资料]"
+            android:textColor="@color/font_color" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/tv_update_accountInfo"
+            android:layout_alignBottom="@+id/tv_update_accountInfo"
+            android:layout_toEndOf="@+id/tv_update_accountInfo"
+            android:text="[登出]"
+            android:textColor="@color/font_color"
+            />
+
+    </RelativeLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="已預約體檢"
+        android:textColor="@color/black"
+        android:textSize="@dimen/sp_16"
+        android:paddingTop="@dimen/dp_8"
+        android:layout_marginLeft="@dimen/dp_8"
+
+        />
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_8"
+        android:id="@+id/rv_myaccount">
+
+    </android.support.v7.widget.RecyclerView>
+
+</LinearLayout>
