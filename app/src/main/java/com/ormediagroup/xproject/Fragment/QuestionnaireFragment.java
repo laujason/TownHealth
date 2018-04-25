@@ -90,10 +90,7 @@ public class QuestionnaireFragment extends Fragment{
             }
 
         });
-//        Log.d("ORM","abckasjdlksajd"+itemJsonArray.size());
 
-        /*ques_content.setLayoutManager(new LinearLayoutManager(getActivity()));
-        ques_content.setAdapter(new ContentAdapter(itemJsonArray));*/
     }
 
     private void loadData() {
@@ -205,7 +202,7 @@ public class QuestionnaireFragment extends Fragment{
             }catch (Exception e){
                 Log.e("ORM",  packagename+"question loading Error: " +e.toString());
             }
-            
+
 
         }
 
