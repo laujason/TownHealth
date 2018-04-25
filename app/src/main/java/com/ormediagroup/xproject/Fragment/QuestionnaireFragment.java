@@ -92,13 +92,7 @@ public class QuestionnaireFragment extends Fragment{
         });
 
     }
-
-    private void loadData() {
-
-
-    }
-
-
+    
 
 
     private class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.ContentHolder> {
