@@ -24,12 +24,13 @@ public class CartFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_cart,null);
+        View view = inflater.inflate(R.layout.item_simple_list_1,null);
+        /*View view = inflater.inflate(R.layout.fragment_cart,null);
         cart_list = view.findViewById(R.id.cart_list);
         cart_subTotal=view.findViewById(R.id.cart_subTotal);
         cart_fees=view.findViewById(R.id.cart_fees);
         cart_total=view.findViewById(R.id.cart_total);
-        initView();
+        initView();*/
         return view;
     }
 

@@ -21,14 +21,49 @@
         android:layout_height="wrap_content"
         >
     </android.support.v4.view.ViewPager>-->
-    
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#eaeaea"
+        android:id="@+id/Topbar"
+        android:layout_alignParentTop="true">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:layout_marginTop="@dimen/dp_4"
+            android:layout_alignParentLeft="true"
+            android:id="@+id/Topbar_logo"
+            android:src="@drawable/logo_100x90"
+            />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="@dimen/dp_4"
+            android:id="@+id/Topbar_shopcart"
+            android:src="@drawable/shopping_cart_70x70"
+            />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_toLeftOf="@id/Topbar_shopcart"
+            android:layout_marginTop="@dimen/dp_4"
+            android:id="@+id/Topbar_myaccount"
+            android:src="@drawable/account_70x70"
+            />
+
+
+    </RelativeLayout>
 
 
     <android.support.v4.view.ViewPager
         android:id="@+id/vp_content_bottom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        >
+        android:layout_above="@+id/view"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/Topbar">
+
     </android.support.v4.view.ViewPager>
 
     <android.support.design.widget.BottomNavigationView
@@ -44,7 +79,8 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_above="@id/bnv_menu"
-        android:background="@color/gray"/>
+        android:background="@color/gray"
+        android:id="@+id/view" />
 
 </RelativeLayout>
 

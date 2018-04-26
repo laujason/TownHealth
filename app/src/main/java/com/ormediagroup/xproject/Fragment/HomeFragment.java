@@ -9,14 +9,22 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.Toast;
 
+import com.ormediagroup.xproject.JsonRespon;
+import com.ormediagroup.xproject.PicassoTrustSSL;
 import com.ormediagroup.xproject.R;
 import com.ormediagroup.xproject.TabContentFragment;
 import com.ormediagroup.xproject.ViewPagerAdapter;
 
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,16 +35,14 @@ import java.util.List;
  * Created by YQ04 on 2018/4/13.
  */
 
-public class HomeFragment extends Fragment implements View.OnClickListener{
-
-    private TabLayout tablayout ;
-    private ViewPager tabViewpager;
+public class HomeFragment extends Fragment{
+    private final String packagename = "HomeFragment - ";
+    private boolean loading;
+    String TownHealthDomain;
+    JSONArray adJsonArray;
+    ArrayList<JSONObject> topAdJsonArray;
+    private ImageView Topad;
     private View view;
-
-    private List<String> tabIndicators;
-    private List<Fragment> tabFragments;
-    private ContentPagerAdapter contentAdapter;
-    private String[] mTabTitles_top = new String []{"推荐","Tap1","Tap2","Tap3","Tap4","Tap5","Tap6","Tap7","Tap8"};
 
 
     @Nullable
@@ -49,77 +55,57 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
                 }
                 return view;
             }
-
             view  = inflater.inflate(R.layout.fragment_home,container,false);
-            tablayout = view.findViewById(R.id.tablayout);
-            tabViewpager =  view.findViewById(R.id.tab_viewpager);
-            initTab(view);
-            initView(view);
+            Topad = view.findViewById(R.id.homepage_Topad);
+
+            TownHealthDomain = getString(R.string.Townhealth_domain);
+            loading = false;
+            /** Get TopAd JSONObject**/
+            String URL = TownHealthDomain + "app/app-home";
+
+            new JsonRespon(getActivity(),URL, new JsonRespon.onComplete() {
+                @Override
+                public void onComplete(JSONObject json) {
+                    try {
+                        adJsonArray = new JSONArray();
+                        topAdJsonArray = new ArrayList<JSONObject>();
+                        /** Prepare TopAd and Bottom Ad data (From JSONArray to ArrayList<JSONObject>)>**/
+                        adJsonArray = json.getJSONArray("ads");
+    //                    Log.i("ORM","ads:"+json.toString());
+                        for (int i = 0; i < adJsonArray.length(); i++) {
+                            topAdJsonArray.add(adJsonArray.getJSONObject(i));
+                            Log.i("ORM",  packagename+"Get topad url: " +topAdJsonArray);
+
+                        }
+                        initView();
+
+                    }catch (Exception e){
+                        Log.e("ORM",  packagename+"Get topad error: " +e.toString());
+                    }
+                }
+            });
+
             return view;
     }
 
-    private void initTab(View view) {
-        tablayout.setTabMode(TabLayout.MODE_SCROLLABLE);
-        tablayout.setTabTextColors(ContextCompat.getColor(getActivity(), R.color.gray), ContextCompat.getColor(getActivity(), R.color.white));
-        tablayout.setSelectedTabIndicatorColor(ContextCompat.getColor(getActivity(), R.color.white));
-        ViewCompat.setElevation(tablayout, 10);
-        tablayout.setupWithViewPager(tabViewpager);
 
-    }
-
-    private void initView(View view) {
-        tabIndicators = new ArrayList<>();
-        for (int i = 0; i < mTabTitles_top.length; i++) {
-            tabIndicators.add(mTabTitles_top[i]);
-        }
-        tabFragments = new ArrayList<>();
-        /*for (String s : tabIndicators) {
-            tabFragments.add(TabContentFragment.newInstance(s));  //内容
-        }*/
-        tabFragments.add(new HomePageFragment());
-        for (int i = 1; i < tabIndicators.size(); i++) {
-            TabContentFragment fragment = TabContentFragment.newInstance(tabIndicators.get(i));
-            tabFragments.add(fragment);
-        }
-        contentAdapter = new ContentPagerAdapter(getActivity().getSupportFragmentManager());
-        tabViewpager.setAdapter(contentAdapter);
-
-        /*setupViewPager(tabViewpager);
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager())
-        tabViewpager.addFragment(new HomePageFragment());*/
-    }
-
-    /*private void setupViewPager(ViewPager viewPager) {
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getActivity().getSupportFragmentManager());
-        adapter.addFragment(new HomePageFragment());
-        viewPager.setAdapter(adapter);
-    }*/
-
-
-
-    @Override
-    public void onClick(View v) {
-
-    }
-
-    private class ContentPagerAdapter extends FragmentPagerAdapter{
-        public ContentPagerAdapter(FragmentManager fm) {
-            super(fm);
-        }
-
-        @Override
-        public Fragment getItem(int position) {
-            return tabFragments.get(position);
-        }
-
-        @Override
-        public int getCount() {
-            return tabIndicators.size();
-        }
-
-        @Override
-        public CharSequence getPageTitle(int position) {
-            return tabIndicators.get(position);
+    private void initView() {
+        try {
+            Topad.setTag(topAdJsonArray.get(0).getString("url"));
+            PicassoTrustSSL.getInstance(getActivity()).load(topAdJsonArray.get(0).getString("img")).into(Topad);
+//            Picasso.with(getActivity()).load(topAdJsonArray.get(0).getString("img")).into(Topad);
+            Log.i("ORM","imageUrl:"+topAdJsonArray.get(0).getString("img"));
+            Topad.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Toast.makeText(getActivity(),"hello",Toast.LENGTH_SHORT).show();
+                }
+            });
+        }catch (Exception e){
+            Log.e("ORM",  packagename+"Homepage Topad load error: " +e.toString());
         }
     }
+
+
+
 }

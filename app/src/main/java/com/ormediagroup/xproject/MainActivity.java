@@ -12,6 +12,8 @@ import android.os.Bundle;
 
 import android.view.KeyEvent;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.ormediagroup.xproject.Fragment.CartFragment;
@@ -20,6 +22,7 @@ import com.ormediagroup.xproject.Fragment.DiscoverFragment;
 import com.ormediagroup.xproject.Fragment.HomeFragment;
 import com.ormediagroup.xproject.Fragment.ProductDetailsFragment;
 import com.ormediagroup.xproject.Fragment.ProductsFragment;
+import com.ormediagroup.xproject.Fragment.QuestionnaireFragment;
 import com.ormediagroup.xproject.Fragment.ShoppingFragment;
 
 
@@ -30,6 +33,7 @@ public class MainActivity extends AppCompatActivity{
     private BottomNavigationView bottomNavigationView;
     private MenuItem menuItem;
     private boolean mIsExit;
+    private ImageView Topbar_myaccount,Topbar_shopcart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,11 +42,23 @@ public class MainActivity extends AppCompatActivity{
         setContentView(R.layout.activity_main);
         viewPager = findViewById(R.id.vp_content_bottom);
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.bnv_menu);
+        Topbar_myaccount = findViewById(R.id.Topbar_myaccount);
+        Topbar_shopcart = findViewById(R.id.Topbar_shopcart);
+
         initView();
 
     }
 
     private void initView() {
+
+        //需改
+        Topbar_myaccount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
         //默认 >3 的选中效果会影响ViewPager的滑动切换时的效果，故利用反射去掉
         BottomNavigationViewHelper.disableShiftMode(bottomNavigationView);
 
@@ -104,7 +120,7 @@ public class MainActivity extends AppCompatActivity{
         adapter.addFragment(new LoginFragment());
         adapter.addFragment(new ShoppingFragment());
 //        adapter.addFragment(new ProductsFragment());
-        adapter.addFragment(new DiscoverFragment());
+        adapter.addFragment(new QuestionnaireFragment());
 //        adapter.addFragment(new UserFragment());
         adapter.addFragment(new CartFragment());
         viewPager.setAdapter(adapter);
