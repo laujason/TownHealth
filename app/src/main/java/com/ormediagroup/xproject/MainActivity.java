@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.ormediagroup.xproject.Fragment.LoginFragment;
 import com.ormediagroup.xproject.Fragment.DiscoverFragment;
 import com.ormediagroup.xproject.Fragment.HomeFragment;
+import com.ormediagroup.xproject.Fragment.QuestionnaireFragment;
 import com.ormediagroup.xproject.Fragment.ShoppingFragment;
 import com.ormediagroup.xproject.Fragment.UserFragment;
 
@@ -98,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
         adapter.addFragment(new HomeFragment());
         adapter.addFragment(new LoginFragment());
         adapter.addFragment(new ShoppingFragment());
-        adapter.addFragment(new DiscoverFragment());
+        adapter.addFragment(new QuestionnaireFragment());
         adapter.addFragment(new UserFragment());
         viewPager.setAdapter(adapter);
     }
