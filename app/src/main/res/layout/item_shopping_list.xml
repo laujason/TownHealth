@@ -1,94 +1,131 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:orientation="horizontal">
 
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="horizontal"
-    >
     <RelativeLayout
-        android:layout_width="wrap_content"
+        android:id="@+id/shopping_item_left"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/dp_8"
         android:layout_marginTop="@dimen/dp_8"
-        android:gravity="center_horizontal"
-        >
+        android:layout_weight="1"
+        android:gravity="center_horizontal">
+
         <ImageView
+            android:id="@+id/shopping_item_image"
             android:layout_width="180dp"
             android:layout_height="180dp"
-            android:paddingTop="@dimen/dp_8"
-            android:src="@drawable/shopping_item_300x300"
             android:layout_alignParentTop="true"
-            android:id="@+id/shopping_item_image"
-            />
+            android:layout_alignStart="@+id/shopping_item_name"
+            android:paddingTop="@dimen/dp_8"
+            android:src="@drawable/shopping_item_300x300" />
+
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="(DNA) 天資基因檢測"
             android:id="@+id/shopping_item_name"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
             android:layout_below="@id/shopping_item_image"
             android:layout_marginTop="@dimen/dp_8"
+            android:ellipsize="end"
+            android:maxLines="1"
             android:paddingLeft="@dimen/dp_8"
-            android:textColor="@color/font_color"/>
+            android:text="(DNA) 天資基因檢測"
+            android:textColor="@color/font_color" />
+
         <TextView
+            android:id="@+id/shopping_item_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="$ 36,000.00"
-            android:id="@+id/shopping_item_price"
-            android:paddingLeft="@dimen/dp_8"
             android:layout_below="@id/shopping_item_name"
-            android:textColor="@color/black"
-            />
+            android:paddingLeft="@dimen/dp_8"
+            android:text="$ 36,000.00"
+            android:textColor="#77a464" />
+
         <Button
+            android:id="@+id/shopping_item_addtocart"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_below="@id/shopping_item_price"
+            android:layout_marginLeft="@dimen/dp_8"
+            android:layout_marginTop="@dimen/dp_8"
+            android:background="@drawable/shape"
+            android:text="加到購物車" />
+        <TextView
+            android:id="@+id/shopping_item_tocart"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:layout_marginTop="@dimen/dp_8"
-            android:layout_marginLeft="@dimen/dp_8"
-            android:text="加到購物車"
-            android:background="@drawable/shape"
-            android:layout_below="@id/shopping_item_price"/>
+            android:gravity="center"
+            android:layout_below="@+id/shopping_item_price"
+            android:layout_toEndOf="@id/shopping_item_addtocart"
+            android:paddingLeft="@dimen/dp_8"
+            android:text="跳去購物車"
+            android:textColor="#582C83"
+            android:visibility="gone"/>
 
     </RelativeLayout>
+
     <RelativeLayout
+        android:id="@+id/shopping_item_right"
+        android:layout_weight="1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dp_8"
         android:gravity="center_horizontal">
+
         <ImageView
+            android:id="@+id/shopping_item_image2"
             android:layout_width="180dp"
             android:layout_height="180dp"
-            android:paddingTop="@dimen/dp_8"
-            android:src="@drawable/shopping_item2_300x300"
             android:layout_alignParentTop="true"
-            android:id="@+id/shopping_item_image2"
-            />
+            android:paddingTop="@dimen/dp_8"
+            android:src="@drawable/shopping_item2_300x300" />
+
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="(DNA) 皮膚基因檢測"
             android:id="@+id/shopping_item_name2"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
             android:layout_below="@id/shopping_item_image2"
             android:layout_marginTop="@dimen/dp_8"
+            android:ellipsize="end"
+            android:maxLines="1"
             android:paddingLeft="@dimen/dp_8"
-            android:textColor="@color/font_color"/>
+            android:text="(DNA) 皮膚基因檢測"
+            android:textColor="@color/font_color" />
+
         <TextView
+            android:id="@+id/shopping_item_price2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="$ 12,800.00"
-            android:id="@+id/shopping_item_price2"
-            android:paddingLeft="@dimen/dp_8"
             android:layout_below="@id/shopping_item_name2"
-            android:textColor="@color/black"
-            />
+            android:paddingLeft="@dimen/dp_8"
+            android:text="$ 12,800.00"
+            android:textColor="#77a464" />
+
         <Button
+            android:id="@+id/shopping_item_addtocart2"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_below="@id/shopping_item_price2"
+            android:layout_marginLeft="@dimen/dp_8"
+            android:layout_marginTop="@dimen/dp_8"
+            android:background="@drawable/shape"
+            android:text="加到購物車" />
+        <TextView
+            android:id="@+id/shopping_item_tocart2"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:layout_marginTop="@dimen/dp_8"
-            android:text="加到購物車"
-            android:layout_marginLeft="@dimen/dp_8"
-            android:background="@drawable/shape"
-            android:layout_below="@id/shopping_item_price2"/>
-
+            android:gravity="center"
+            android:layout_below="@+id/shopping_item_price2"
+            android:layout_toEndOf="@id/shopping_item_addtocart2"
+            android:paddingLeft="@dimen/dp_8"
+            android:text="跳去購物車"
+            android:textColor="#582C83"
+            android:visibility="gone"/>
     </RelativeLayout>
 
 
