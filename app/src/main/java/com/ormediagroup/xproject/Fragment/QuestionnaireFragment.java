@@ -92,7 +92,7 @@ public class QuestionnaireFragment extends Fragment{
         });
 
     }
-    
+
 
 
     private class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.ContentHolder> {
@@ -119,13 +119,13 @@ public class QuestionnaireFragment extends Fragment{
                     Log.d("ORM","debug gender"+list.get(2).getJSONArray(4).get(1).toString());
 
 //                  holder.item_ques.setText(list.get(i).get(0).toString());
-
 //                  holder.layout_personal_info.addView(tv);
                     switch (list.get(i).get(1).toString()){
                         case "text":
                             TextView tv=new TextView(getActivity());
                             tv.setText(list.get(i).get(0).toString());
                             EditText et=new EditText(getActivity());
+                            TextView tv1 = new TextView(getActivity());
 //                            et.setWidth(800);
                             holder.layout_personal_info.addView(tv);
                             holder.layout_personal_info.addView(et);
@@ -145,17 +145,11 @@ public class QuestionnaireFragment extends Fragment{
 
                             }
                             TextView tv_radio=new TextView(getActivity());
+
                             tv_radio.setText(list.get(i).get(0).toString());
                             holder.layout_personal_info.addView(tv_radio);
                             holder.layout_personal_info.addView(group);
-                            /*group.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-                                @Override
-                                public void onCheckedChanged(RadioGroup group, int checkedId) {
-                                    switch (checkedId){
 
-                                    }
-                                }
-                            });*/
 
                             break;
                         case "date":
@@ -176,16 +170,6 @@ public class QuestionnaireFragment extends Fragment{
 
                                 }
                             });
-
-
-
-                            /*et_date.setOnTouchListener(new View.OnTouchListener() {
-                                @Override
-                                public boolean onTouch(View v, MotionEvent event) {
-                                    if (event.getAction() == MotionEvent.ACTION_DOWN)
-                                    return false;
-                                }
-                            });*/
 
                             break;
                         default:

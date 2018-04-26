@@ -79,14 +79,14 @@
                 android:text="question:"
                 android:layout_column="1"
                 android:layout_span="1"
-                android:id="@+id/tv_personal_info"
+                android:id="@+id/tv_personal_info_nameZH"
                 android:paddingLeft="@dimen/sp_18" />
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="@dimen/dp_16"
                 android:layout_marginLeft="@dimen/dp_8"
-                android:id="@+id/et_personal_info"
+                android:id="@+id/et_personal_info_nameZH"
                 android:maxLength="20"
                 android:layout_weight="1"
                 android:layout_column="2"
