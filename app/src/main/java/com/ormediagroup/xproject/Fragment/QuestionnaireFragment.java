@@ -119,7 +119,7 @@ public class QuestionnaireFragment extends Fragment{
                     Log.d("ORM","debug gender"+list.get(2).getJSONArray(4).get(1).toString());
 
 //                  holder.item_ques.setText(list.get(i).get(0).toString());
-//                  holder.layout_personal_info.addView(tv);
+//                  holder.layout_personal_info.addView(tv);12123
                     switch (list.get(i).get(1).toString()){
                         case "text":
                             TextView tv=new TextView(getActivity());
