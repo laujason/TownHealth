@@ -14,6 +14,7 @@ import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.ormediagroup.xproject.Fragment.CartFragment;
 import com.ormediagroup.xproject.Fragment.LoginFragment;
 import com.ormediagroup.xproject.Fragment.DiscoverFragment;
 import com.ormediagroup.xproject.Fragment.HomeFragment;
@@ -105,7 +106,7 @@ public class MainActivity extends AppCompatActivity{
 //        adapter.addFragment(new ProductsFragment());
         adapter.addFragment(new DiscoverFragment());
 //        adapter.addFragment(new UserFragment());
-        adapter.addFragment(new ProductDetailsFragment());
+        adapter.addFragment(new CartFragment());
         viewPager.setAdapter(adapter);
     }
 
