@@ -23,4 +23,6 @@
 
     <string name="save">储存</string>
 
+    <item name="tag_text" type="id">text</item>
+    <item name="tag_type" type="id">type</item>
 </resources>

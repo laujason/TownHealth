@@ -20,6 +20,7 @@ import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TableRow;
@@ -27,6 +28,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ormediagroup.xproject.Adapters.QuestionnaireAdapter;
+import com.ormediagroup.xproject.Beans.QuestionnaireBean;
 import com.ormediagroup.xproject.JsonRespon;
 import com.ormediagroup.xproject.R;
 
@@ -38,6 +40,7 @@ import java.text.SimpleDateFormat;
 import java.util.AbstractList;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Locale;
 import java.util.TimeZone;
 
@@ -57,12 +60,16 @@ public class QuestionnaireFragment extends Fragment{
     private Calendar myCalendar;
     public String[] testChoice;
     public SharedPreferences.Editor editor;
+    private List<QuestionnaireBean> questionnaireBeanList;
+    private ProgressBar progressBar;
+
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_questionnaire,container,false);
         ques_content = view.findViewById(R.id.rv_ques_content);
+        progressBar = view.findViewById(R.id.progressBar_question);
 //        ques_item = view.findViewById(R.id.ques_itemlist);
 
         initView();
@@ -72,51 +79,55 @@ public class QuestionnaireFragment extends Fragment{
     private void initView() {
         TownHealthDomain = getString(R.string.Townhealth_domain);
         String URL =  TownHealthDomain+"app/app-questionnaire/";
-
-       /* new JsonRespon(getActivity(), URL, new JsonRespon.onComplete() {
+        ques_content.setLayoutManager(new LinearLayoutManager(getActivity()));
+        progressBar.setVisibility(View.VISIBLE);
+        new JsonRespon(getActivity(), URL, new JsonRespon.onComplete() {
             @Override
             public void onComplete(JSONObject json) {
+                final List<QuestionnaireBean> questionnaireBeanList = new ArrayList<>();
                 try {
                     itemJsonArray = new ArrayList<JSONArray>();
                     info_JsonArray = new JSONArray();
                     family_JsonArray = new JSONArray();
-                    personal_JaonArray = new JSONArray();
+                    personal_JsonArray = new JSONArray();
 
                     info_JsonArray = json.getJSONArray("basic");
                     family_JsonArray = json.getJSONArray("family");
-                    personal_JaonArray = json.getJSONArray("personal");
-                    Log.d("ORM","Personal JSon"+personal_JaonArray.length());
-//                  ques_JsonArray = json.getJSONArray("personal");
+                    personal_JsonArray = json.getJSONArray("personal");
+                    QuestionnaireBean questionnaireBean;
                     for (int i = 0; i < info_JsonArray.length(); i++) {
-                        itemJsonArray.add(info_JsonArray.getJSONArray(i));
-                        Log.d("ORM",packagename+"info_JsonArray data:"+info_JsonArray.getJSONArray(i).get(1).toString());
-                    }
-                    for (int j = 0;j < family_JsonArray.length();j++){
-                        itemJsonArray.add(family_JsonArray.getJSONArray(j));
-                    }
+                        questionnaireBean = new QuestionnaireBean();
 
+                        questionnaireBean.question = info_JsonArray.getJSONArray(i).get(0).toString();
+                        Log.d("ORM","abcdefg: " + questionnaireBean.question);
+                        questionnaireBean.type = info_JsonArray.getJSONArray(i).get(1).toString();
+                        questionnaireBean.answer = info_JsonArray.getJSONArray(i).get(2).toString();
+                        questionnaireBeanList.add(questionnaireBean);
+                    }
+                    Log.d("ORM","Personal JSon"+questionnaireBeanList.size());
                     Log.i("ORM",packagename+"itemJsonArray data:"+itemJsonArray.toString());
-                    ques_content.setLayoutManager(new LinearLayoutManager(getActivity()));
-//                    ques_content.setAdapter(new ContentAdapter(itemJsonArray));
 
                 } catch (Exception e) {
-//                    e.printStackTrace();
                     Log.e("ORM",  packagename+"Get json error: " +e.toString());
                 }
+                adapter = new QuestionnaireAdapter(getActivity(), questionnaireBeanList);
+//                adapter = new QuestionnaireAdapter(getActivity());
+                ques_content.setAdapter(adapter);
             }
 
-        });*/
-        ques_content.setLayoutManager(new LinearLayoutManager(getActivity()));
-        ques_content.setAdapter(new ContentAdapter());
+        });
+        progressBar.setVisibility(View.GONE);
 
+        /*ques_content.setLayoutManager(new LinearLayoutManager(getActivity()));
+        ques_content.setAdapter(new ContentAdapter());*/
     }
 
-    private class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.ContentHolder> {
-        /*private ArrayList<JSONArray> list;
+    /*private class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.ContentHolder> {
+        private ArrayList<JSONArray> list;
         public ContentAdapter(ArrayList<JSONArray> list){
             this.list = list;
 
-        }*/
+        }
         @Override
         public QuestionnaireFragment.ContentAdapter.ContentHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             return new QuestionnaireFragment.ContentAdapter.ContentHolder(LayoutInflater.from(getActivity()).inflate(R.layout.item_personalinfo_list, parent, false));
@@ -139,9 +150,9 @@ public class QuestionnaireFragment extends Fragment{
 
                         Log.d("ORM","family_JsonArray length"+personal_JsonArray.getJSONArray(0).get(1).toString());
                         Log.d("ORM","personal_JaonArray string"+personal_JsonArray.getJSONArray(76).get(0).toString());
-                        /**
+                        *//**
                          * Personal information
-                         */
+                         *//*
                         for (int i = 0; i < info_JsonArray.length(); i++) {
                             Log.d("ORM","debug ss"+info_JsonArray.length());
                             Log.i("ORM","json Array"+info_JsonArray.getJSONArray(1).toString());
@@ -152,7 +163,13 @@ public class QuestionnaireFragment extends Fragment{
                                     TextView tv=new TextView(getActivity());
                                     tv.setText(info_JsonArray.getJSONArray(i).get(0).toString());
                                     EditText et=new EditText(getActivity());
+                                    *//*View v = new View(getActivity());
+                                    String a = v.getTag(R.id.textLabel6+i).toString();*//*
                                     TextView tv1 = new TextView(getActivity());
+                                    tv1.setText("123");
+                                    Log.i("ORM","test getTag: "+tv.getText().toString());
+                                    Log.i("ORM","test getTag2: "+tv1.getText().toString());
+//                                    Log.i("ORM","test getTag3: "+a);
 //                            et.setWidth(800);
                                     holder.layout_personal_info.addView(tv);
                                     holder.layout_personal_info.addView(et);
@@ -194,9 +211,9 @@ public class QuestionnaireFragment extends Fragment{
                             }
                         }
 
-                        /**
+                        *//**
                          * family history
-                         */
+                         *//*
                         for (int i = 0; i < family_JsonArray.length(); i++) {
                             TextView tv_multiple = new TextView(getActivity());
                             tv_multiple.setText(family_JsonArray.getJSONArray(i).get(0).toString());
@@ -213,9 +230,9 @@ public class QuestionnaireFragment extends Fragment{
                             }
 
                         }
-                        /**
+                        *//**
                          *  personal history
-                         */
+                         *//*
                         for (int i = 0; i < 10; i++) {
                             Log.i("ORM","switch value:  "+personal_JsonArray.getJSONArray(i).get(1).toString());
                             switch (personal_JsonArray.getJSONArray(i).get(1).toString()){
@@ -292,9 +309,9 @@ public class QuestionnaireFragment extends Fragment{
 
                             }
                         }
-                        /**
+                        *//**
                          * part 4 last_six_months_disease
-                         */
+                         *//*
                         for (int i =12 ; i<20;i++){
                             switch (personal_JsonArray.getJSONArray(i).get(1).toString()){
                                 case "text":
@@ -340,9 +357,9 @@ public class QuestionnaireFragment extends Fragment{
                             }
                         }
 
-                        /**
+                        *//**
                          * part 5 tooth_history
-                         */
+                         *//*
                         for (int i =21 ; i<24;i++){
                             switch (personal_JsonArray.getJSONArray(i).get(1).toString()){
                                 case "text":
@@ -388,9 +405,9 @@ public class QuestionnaireFragment extends Fragment{
                             }
                         }
 
-                        /**
+                        *//**
                          * part 6 last_six_months_custom
-                         */
+                         *//*
                         for (int i =25 ; i<57;i++){
                             switch (personal_JsonArray.getJSONArray(i).get(1).toString()){
                                 case "text":
@@ -405,7 +422,7 @@ public class QuestionnaireFragment extends Fragment{
 
                                     RadioGroup group = new RadioGroup(getActivity());
                                     if(personal_JsonArray.getJSONArray(i).getJSONArray(4).length()>22){
-                                        /*for(int j=0;j<30;j++){
+                                        *//*for(int j=0;j<30;j++){
                                             RadioButton rb = new RadioButton(getActivity());
                                             rb.setText(personal_JsonArray.getJSONArray(i).getJSONArray(4).get(j).toString());
                                             group.addView(rb);
@@ -414,7 +431,7 @@ public class QuestionnaireFragment extends Fragment{
                                                 et2.setWidth(1000);
                                                 group.addView(et2);
                                             }
-                                        }*/
+                                        }*//*
                                         final int x =i;
 //                                    final TextView tv_radio_value=new TextView(getActivity());
                                         final EditText et_radio=new EditText(getActivity());
@@ -493,9 +510,9 @@ public class QuestionnaireFragment extends Fragment{
                             }
                         }
 
-                        /**
+                        *//**
                          * part 6 last_six_months_custom
-                         */
+                         *//*
                         for (int i =58 ; i<61;i++){
                             switch (personal_JsonArray.getJSONArray(i).get(1).toString()){
                                 case "radio":
@@ -520,9 +537,9 @@ public class QuestionnaireFragment extends Fragment{
                             }
                         }
 
-                        /**
+                        *//**
                          * part 7 drinking test
-                         */
+                         *//*
                         for (int i =62 ; i<72;i++){
                             switch (personal_JsonArray.getJSONArray(i).get(1).toString()){
                                 case "radio":
@@ -547,9 +564,9 @@ public class QuestionnaireFragment extends Fragment{
                             }
                         }
 
-                        /**
+                        *//**
                          * part 8 Hormone test
-                         */
+                         *//*
                         for (int i =73 ; i<79;i++){
                             CheckBox Cb = new CheckBox(getActivity());
                             Cb.setText(personal_JsonArray.getJSONArray(i).get(0).toString());
@@ -561,9 +578,9 @@ public class QuestionnaireFragment extends Fragment{
                             }
                         }
 
-                        /**
+                        *//**
                          * part9 stress_test
-                         */
+                         *//*
                         for (int i =80 ; i<98;i++){
                             switch (personal_JsonArray.getJSONArray(i).get(1).toString()){
                                 case "radio":
@@ -584,9 +601,9 @@ public class QuestionnaireFragment extends Fragment{
 
                         }
 
-                        /**
+                        *//**
                          * part9 emotion test
-                         */
+                         *//*
                         for (int i =100 ; i<118;i++){
                             switch (personal_JsonArray.getJSONArray(i).get(1).toString()){
                                 case "radio":
@@ -623,13 +640,13 @@ public class QuestionnaireFragment extends Fragment{
             });
 //            tv.setText("123456");
 
-            /*try {
+            *//*try {
                 Log.d("ORM","debug abc");
 
 
             }catch (Exception e){
                 Log.e("ORM",  packagename+"question loading Error: " +e.toString());
-            }*/
+            }*//*
 
 
         }
@@ -681,5 +698,5 @@ public class QuestionnaireFragment extends Fragment{
 
             }
         }
-    }
+    }*/
 }
